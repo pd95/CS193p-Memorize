@@ -36,7 +36,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                     cards[potentialMatchIndex].isMatched = true
 
                     let currentCardTimestamp = Date().timeIntervalSinceReferenceDate
-                    let multiplier = max(10 - (currentCardTimestamp - firstCardTimestamp), 1)
+                    let multiplier = max(5 - (currentCardTimestamp - firstCardTimestamp), 1)
                     score += Int(2 * multiplier)
                 }
                 else {
