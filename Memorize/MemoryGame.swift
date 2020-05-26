@@ -10,6 +10,9 @@ import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
     var cards: [Card]
+    var score = 0
+    var seenCards = [Card]()
+    var firstCardTimestamp : TimeInterval = 0
 
     var indexOfTheOneAndOnlyFaceUpCard: Int? {
         get {
@@ -17,6 +20,9 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         }
         set {
             for index in cards.indices {
+                if cards[index].isFaceUp {
+                    seenCards.append(cards[index])
+                }
                 cards[index].isFaceUp = index == newValue
             }
         }
@@ -28,11 +34,20 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                 if cards[chosenIndex].content == cards[potentialMatchIndex].content {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
+
+                    let currentCardTimestamp = Date().timeIntervalSinceReferenceDate
+                    let multiplier = max(10 - (currentCardTimestamp - firstCardTimestamp), 1)
+                    score += Int(2 * multiplier)
+                }
+                else {
+                    score += seenCards.firstIndex(matching: cards[potentialMatchIndex]) != nil ? -1 : 0
+                    score += seenCards.firstIndex(matching: cards[chosenIndex]) != nil ? -1 : 0
                 }
                 cards[chosenIndex].isFaceUp = true
             }
             else {
                 indexOfTheOneAndOnlyFaceUpCard = chosenIndex
+                firstCardTimestamp = Date().timeIntervalSinceReferenceDate
             }
         }
     }
