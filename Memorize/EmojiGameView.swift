@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  EmojiGameView.swift
 //  Memorize
 //
 //  Created by Philipp on 19.05.20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct EmojiGameView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
 
     var body: some View {
@@ -23,7 +23,6 @@ struct ContentView: View {
         }
         .padding()
         .foregroundColor(.orange)
-        .font(viewModel.numberOfPairs == 5 ? Font.headline : Font.largeTitle)
     }
 }
 
@@ -31,18 +30,33 @@ struct CardView: View {
     let card: MemoryGame<String>.Card
 
     var body: some View {
+        GeometryReader { proxy in
+            self.body(for: proxy.size)
+        }
+    }
+
+    func body(for size: CGSize) -> some View {
         ZStack {
-            if card.isFaceUp {
-                RoundedRectangle(cornerRadius: 10.0)
+            if self.card.isFaceUp {
+                RoundedRectangle(cornerRadius: cornerRadius)
                     .fill(Color.white)
-                RoundedRectangle(cornerRadius: 10.0)
-                    .stroke(lineWidth: 3)
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .stroke(lineWidth: edgeLineWidth)
                 Text(card.content)
             }
             else {
-                RoundedRectangle(cornerRadius: 10.0)
+                RoundedRectangle(cornerRadius: cornerRadius)
             }
         }
+        .font(fontSize(for: size))
+    }
+
+    // MARK: - Drawing Constants
+
+    let cornerRadius: CGFloat = 10
+    let edgeLineWidth: CGFloat = 3
+    func fontSize(for size: CGSize) -> Font {
+        Font.system(size: min(size.width, size.height) * 0.75)
     }
 }
 
@@ -50,6 +64,6 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: EmojiMemoryGame())
+        EmojiGameView(viewModel: EmojiMemoryGame())
     }
 }

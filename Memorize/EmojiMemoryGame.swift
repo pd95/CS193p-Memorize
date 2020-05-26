@@ -10,7 +10,7 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
 
-    private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
+    @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
     private(set) var numberOfPairs: Int = 0
 
     static func createMemoryGame() -> MemoryGame<String> {

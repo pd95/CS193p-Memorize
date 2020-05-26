@@ -11,10 +11,18 @@ import Foundation
 struct MemoryGame<CardContent> {
     var cards: [Card]
 
-    func choose(card: Card) {
+    mutating func choose(card: Card) {
         print("card chosen: \(card)")
+        let chosenIndex = index(of: card)
+        cards[chosenIndex].isFaceUp.toggle()
+    }
 
-        //card.isFaceUp.toggle()
+    func index(of card: Card) -> Int {
+        if let index = cards.firstIndex(where: { $0.id == card.id }) {
+            return index
+        }
+        return 0 // TODO Bogus return value
+        //fatalError("Cannot find card \(card)")
     }
 
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
