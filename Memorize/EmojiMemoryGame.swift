@@ -63,7 +63,10 @@ class EmojiMemoryGame: ObservableObject {
     }
 
     func restart() {
-        theme = EmojiMemoryTheme.themes.randomElement()!
+        let oldThemeName = theme.name
+        repeat {
+            theme = EmojiMemoryTheme.themes.randomElement()!
+        } while theme.name == oldThemeName
         let emoji = theme.emoji.shuffled()
         let numberOfPairs: Int = theme.numberOfPairs ?? (2...emoji.count).randomElement()!
         model = MemoryGame(numberOfPairsOfCards: numberOfPairs) { emoji[$0] }
