@@ -31,7 +31,7 @@ struct EmojiMemoryGameView: View {
         .padding()
     }
 
-    var header: some View {
+    private var header: some View {
         HStack {
             Text(viewModel.theme.name)
                 .font(.largeTitle)
@@ -42,7 +42,7 @@ struct EmojiMemoryGameView: View {
         }
     }
 
-    var restartButton: some View {
+    private var restartButton: some View {
         Button(action: restart) {
             Text("New Game")
                 .font(.headline)
@@ -58,7 +58,7 @@ struct EmojiMemoryGameView: View {
         }
     }
 
-    func restart() {
+    private func restart() {
         viewModel.restart()
     }
 }
@@ -72,7 +72,7 @@ struct CardView: View {
         }
     }
 
-    func body(for size: CGSize) -> some View {
+    private func body(for size: CGSize) -> some View {
         ZStack {
             if self.card.isFaceUp {
                 RoundedRectangle(cornerRadius: cornerRadius)
@@ -96,9 +96,9 @@ struct CardView: View {
 
     // MARK: - Drawing Constants
 
-    let cornerRadius: CGFloat = 10
-    let edgeLineWidth: CGFloat = 3
-    func fontSize(for size: CGSize) -> Font {
+    private let cornerRadius: CGFloat = 10
+    private let edgeLineWidth: CGFloat = 3
+    private func fontSize(for size: CGSize) -> Font {
         Font.system(size: min(size.width, size.height) * 0.75)
     }
 }

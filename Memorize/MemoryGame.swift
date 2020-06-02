@@ -9,12 +9,12 @@
 import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
-    var cards: [Card]
-    var score = 0
-    var seenCards = [Card]()
-    var firstCardTimestamp : TimeInterval = 0
+    private(set) var cards: [Card]
+    private(set) var score = 0
+    private var seenCards = [Card]()
+    private var firstCardTimestamp : TimeInterval = 0
 
-    var indexOfTheOneAndOnlyFaceUpCard: Int? {
+    private var indexOfTheOneAndOnlyFaceUpCard: Int? {
         get {
             cards.indices.filter { cards[$0].isFaceUp }.only
         }
