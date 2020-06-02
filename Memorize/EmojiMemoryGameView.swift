@@ -13,14 +13,7 @@ struct EmojiMemoryGameView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Text(viewModel.theme.name)
-                    .font(.largeTitle)
-                    .padding()
-
-                Spacer()
-                Text("\(viewModel.score)")
-            }
+            header
 
             Grid(viewModel.cards) { card in
                 CardView(card: card)
@@ -32,22 +25,37 @@ struct EmojiMemoryGameView: View {
             .padding()
             .foregroundColor(viewModel.theme.color)
 
-            Button(action: restart) {
-                Text("New Game")
-                    .font(.headline)
-                    .padding()
-                    .foregroundColor(Color.white)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(viewModel.theme.color))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.primary, lineWidth: 1))
-                    .shadow(radius: 5)
-            }
+            restartButton
         }
         .accentColor(viewModel.theme.color)
         .padding()
+    }
+
+    var header: some View {
+        HStack {
+            Text(viewModel.theme.name)
+                .font(.largeTitle)
+                .padding()
+
+            Spacer()
+            Text("\(viewModel.score)")
+        }
+    }
+
+    var restartButton: some View {
+        Button(action: restart) {
+            Text("New Game")
+                .font(.headline)
+                .padding()
+                .foregroundColor(Color.white)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(viewModel.theme.color))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.primary, lineWidth: 1))
+                .shadow(radius: 5)
+        }
     }
 
     func restart() {
