@@ -13,8 +13,6 @@ struct EmojiMemoryGameView: View {
 
     var body: some View {
         VStack {
-            header
-
             Grid(viewModel.cards) { card in
                 CardView(card: card)
                     .padding(5)
@@ -31,17 +29,8 @@ struct EmojiMemoryGameView: View {
         }
         .accentColor(viewModel.theme.color)
         .padding()
-    }
-
-    private var header: some View {
-        HStack {
-            Text(viewModel.theme.name)
-                .font(.largeTitle)
-                .padding()
-
-            Spacer()
-            Text("\(viewModel.score)")
-        }
+        .navigationBarTitle(Text(viewModel.theme.name), displayMode: .large)
+        .navigationBarItems(trailing: Text("\(viewModel.score)").font(.largeTitle))
     }
 
     private var restartButton: some View {
@@ -128,6 +117,8 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = EmojiMemoryGame()
         game.choose(card: game.cards[0])
-        return EmojiMemoryGameView(viewModel: game)
+        return NavigationView {
+            EmojiMemoryGameView(viewModel: game)
+        }
     }
 }
