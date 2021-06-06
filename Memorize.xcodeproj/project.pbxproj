@@ -15,6 +15,8 @@
 		17B66997265FF6B600217145 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B66996265FF6B600217145 /* EmojiMemoryGame.swift */; };
 		17B66999266038FE00217145 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B66998266038FE00217145 /* Theme.swift */; };
 		17F896B9266CC3A300ECDB02 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F896B8266CC3A300ECDB02 /* CardView.swift */; };
+		17F896BB266CCB6F00ECDB02 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F896BA266CCB6F00ECDB02 /* AspectVGrid.swift */; };
+		17F896BD266CD25000ECDB02 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F896BC266CD25000ECDB02 /* Pie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		17B66998266038FE00217145 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		17B6699A266057A000217145 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		17F896B8266CC3A300ECDB02 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		17F896BA266CCB6F00ECDB02 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
+		17F896BC266CD25000ECDB02 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +70,9 @@
 				17B66994265FF6AE00217145 /* MemoryGame.swift */,
 				17B66996265FF6B600217145 /* EmojiMemoryGame.swift */,
 				17B66987265FE9AC00217145 /* EmojiMemoryGameView.swift */,
+				17F896BA266CCB6F00ECDB02 /* AspectVGrid.swift */,
 				17F896B8266CC3A300ECDB02 /* CardView.swift */,
+				17F896BC266CD25000ECDB02 /* Pie.swift */,
 				17B66998266038FE00217145 /* Theme.swift */,
 				17B66989265FE9AD00217145 /* Assets.xcassets */,
 				17B6698E265FE9AD00217145 /* Info.plist */,
@@ -154,6 +160,8 @@
 			files = (
 				17B66995265FF6AE00217145 /* MemoryGame.swift in Sources */,
 				17B66988265FE9AC00217145 /* EmojiMemoryGameView.swift in Sources */,
+				17F896BD266CD25000ECDB02 /* Pie.swift in Sources */,
+				17F896BB266CCB6F00ECDB02 /* AspectVGrid.swift in Sources */,
 				17B66999266038FE00217145 /* Theme.swift in Sources */,
 				17B66986265FE9AC00217145 /* MemorizeApp.swift in Sources */,
 				17F896B9266CC3A300ECDB02 /* CardView.swift in Sources */,

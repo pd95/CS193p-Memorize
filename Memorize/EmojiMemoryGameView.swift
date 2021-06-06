@@ -17,15 +17,16 @@ struct EmojiMemoryGameView: View {
             Text(game.themeName)
                 .font(.title)
 
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
-                    ForEach(game.cards) { card in
-                        CardView(card: card, color: game.color)
-                            .aspectRatio(2/3, contentMode: .fit)
-                            .onTapGesture {
-                                game.choose(card)
-                            }
-                    }
+            AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
+                if card.isMatched && !card.isFaceUp {
+                    Rectangle().opacity(0)
+                }
+                else {
+                    CardView(card: card, color: game.color)
+                        .padding(4)
+                        .onTapGesture {
+                            game.choose(card)
+                        }
                 }
             }
             .foregroundColor(.red)
